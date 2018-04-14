@@ -1,0 +1,8 @@
+// @flow
+
+type Comparator<T> = (T, T) => number
+
+declare function merge<T>(arrays: Array<Array<T>>, comparator?: Comparator<T>): Array<T>
+
+declare module.exports: typeof merge
+

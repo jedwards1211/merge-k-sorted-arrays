@@ -39,15 +39,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jcoreio/merge-k-sorted-arrays.git"
+    "url": "https://github.com/jedwards1211/merge-k-sorted-arrays.git"
   },
   "keywords": [
     "skeleton"
   ],
   "bugs": {
-    "url": "https://github.com/jcoreio/merge-k-sorted-arrays/issues"
+    "url": "https://github.com/jedwards1211/merge-k-sorted-arrays/issues"
   },
-  "homepage": "https://github.com/jcoreio/merge-k-sorted-arrays#readme",
+  "homepage": "https://github.com/jedwards1211/merge-k-sorted-arrays#readme",
   "devDependencies": {
     "@commitlint/cli": "^6.0.2",
     "@commitlint/config-conventional": "^6.0.2",
@@ -66,5 +66,8 @@
     "nyc": "^11.4.1",
     "semantic-release": "^12.4.1",
     "travis-deploy-once": "^4.3.3"
+  },
+  "dependencies": {
+    "tinyqueue": "^1.2.3"
   }
 }
