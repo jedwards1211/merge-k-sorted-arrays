@@ -1,7 +1,7 @@
 {
   "name": "merge-k-sorted-arrays",
   "version": "0.0.0-development",
-  "description": "merges 2 or more arrays efficiently using a priority queue",
+  "description": "merges 2 or more sorted arrays efficiently using a priority queue",
   "main": "index.js",
   "author": "Andy Edwards",
   "license": "MIT",

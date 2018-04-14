@@ -5,7 +5,7 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-Merges 2 or more arrays efficiently using a priority queue.
+Merges 2 or more sorted arrays efficiently using a priority queue.
 
 See https://algorithms.tutorialhorizon.com/merge-k-sorted-arrays/ for an
 explanation of the algorithm.
