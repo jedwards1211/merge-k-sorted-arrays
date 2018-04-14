@@ -31,7 +31,7 @@ merge([
 
 ### With custom comparator
 
-You may pass an optional custom comparator as the second argument:
+You may pass an optional custom comparator:
 
 ```js
 merge(
@@ -40,9 +40,32 @@ merge(
     [8, 6, 4, 2],
     [11, 10, 9, 0],
   ],
-  function (a, b) {
-    return b - a
-  }
+  {comparator: function (a, b) { return b - a }}
 )
 // [11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 ```
+
+### Merging parallel arrays
+
+Let's say you want to merge arrays of times and their corresponding values.
+If you pass the `outputMetadata: true` option, `merge` will return
+`[indexOfSourceArray, indexInSourceArray, value]` tuples that you can use to
+
+```js
+var times = [
+  [0, 2, 4, 6],
+  [1, 3, 5, 7],
+]
+var values = [
+  [10, 20, 50, 40],
+  [80, 70, 30, 60],
+]
+
+var merged = merge(times, {outputMetadata: true})
+
+var mergedTimes = merged.map(([a, i, time]) => time)
+// [0, 1, 2, 3, 4, 5, 6, 7]
+var mergedValues = merged.map(([a, i]) => values[a][i])
+// [10, 80, 20, 70, 50, 30, 40, 60]
+```
+
