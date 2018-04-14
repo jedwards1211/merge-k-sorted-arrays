@@ -2,7 +2,8 @@
 
 type Comparator<T> = (T, T) => number
 
-declare function merge<T>(arrays: Array<Array<T>>, comparator?: Comparator<T>): Array<T>
-
-declare module.exports: typeof merge
+declare module.exports: <T>(
+  Array<Array<T>>,
+  options?: {comparator?: Comparator<T>, outputMetadata?: boolean} | Comparator<T>
+) => Array<T>
 
