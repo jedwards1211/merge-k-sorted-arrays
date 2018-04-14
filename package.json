@@ -1,7 +1,7 @@
 {
-  "name": "untranspiled-js-library-skeleton",
-  "version": "1.0.0",
-  "description": "my skeleton for transpiler-free JS packages",
+  "name": "merge-k-sorted-arrays",
+  "version": "0.0.0-development",
+  "description": "merges 2 or more arrays efficiently using a priority queue",
   "main": "index.js",
   "author": "Andy Edwards",
   "license": "MIT",
@@ -39,15 +39,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jedwards1211/untranspiled-js-library-skeleton.git"
+    "url": "https://github.com/jcoreio/merge-k-sorted-arrays.git"
   },
   "keywords": [
     "skeleton"
   ],
   "bugs": {
-    "url": "https://github.com/jedwards1211/untranspiled-js-library-skeleton/issues"
+    "url": "https://github.com/jcoreio/merge-k-sorted-arrays/issues"
   },
-  "homepage": "https://github.com/jedwards1211/untranspiled-js-library-skeleton#readme",
+  "homepage": "https://github.com/jcoreio/merge-k-sorted-arrays#readme",
   "devDependencies": {
     "@commitlint/cli": "^6.0.2",
     "@commitlint/config-conventional": "^6.0.2",
