@@ -42,7 +42,12 @@
     "url": "https://github.com/jedwards1211/merge-k-sorted-arrays.git"
   },
   "keywords": [
-    "skeleton"
+    "merge",
+    "sorted",
+    "arrays",
+    "sorted-arrays",
+    "algorithm",
+    "algorithms"
   ],
   "bugs": {
     "url": "https://github.com/jedwards1211/merge-k-sorted-arrays/issues"
