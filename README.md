@@ -1,9 +1,9 @@
 # merge-k-sorted-arrays
 
-[![Build Status](https://travis-ci.org/jedwards1211/merge-k-sorted-arrays.svg?branch=master)](https://travis-ci.org/jedwards1211/merge-k-sorted-arrays)
+[![CircleCI](https://circleci.com/gh/jedwards1211/merge-k-sorted-arrays.svg?style=svg)](https://circleci.com/gh/jedwards1211/merge-k-sorted-arrays)
 [![Coverage Status](https://codecov.io/gh/jedwards1211/merge-k-sorted-arrays/branch/master/graph/badge.svg)](https://codecov.io/gh/jedwards1211/merge-k-sorted-arrays)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![npm version](https://badge.fury.io/js/merge-k-sorted-arrays.svg)](https://badge.fury.io/js/merge-k-sorted-arrays)
 
 Merges 2 or more sorted arrays efficiently using a priority queue.
 
@@ -40,7 +40,11 @@ merge(
     [8, 6, 4, 2],
     [11, 10, 9, 0],
   ],
-  {comparator: function (a, b) { return b - a }}
+  {
+    comparator: function (a, b) {
+      return b - a
+    },
+  }
 )
 // [11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 ```
@@ -61,11 +65,10 @@ var values = [
   [80, 70, 30, 60],
 ]
 
-var merged = merge(times, {outputMetadata: true})
+var merged = merge(times, { outputMetadata: true })
 
 var mergedTimes = merged.map(([a, i, time]) => time)
 // [0, 1, 2, 3, 4, 5, 6, 7]
 var mergedValues = merged.map(([a, i]) => values[a][i])
 // [10, 80, 20, 70, 50, 30, 40, 60]
 ```
-
