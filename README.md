@@ -40,11 +40,7 @@ merge(
     [8, 6, 4, 2],
     [11, 10, 9, 0],
   ],
-  {
-    comparator: function (a, b) {
-      return b - a
-    },
-  }
+  { comparator: (a, b) => b - a }
 )
 // [11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 ```
@@ -71,4 +67,39 @@ var mergedTimes = merged.map(([a, i, time]) => time)
 // [0, 1, 2, 3, 4, 5, 6, 7]
 var mergedValues = merged.map(([a, i]) => values[a][i])
 // [10, 80, 20, 70, 50, 30, 40, 60]
+```
+
+### Unique / Dedupe
+
+Passing the `unique: true` option will exclude duplicate elements:
+
+```js
+merge(
+  [
+    [1, 3, 3, 6, 6],
+    [2, 2, 3, 5],
+  ],
+  { unique: true }
+)
+// [1, 2, 3, 5, 6]
+```
+
+When using `unique: true` with `outputMetadata: true`, the last occurrence of a value in the
+last array containing that value wins:
+
+```js
+merge(
+  [
+    [1, 3, 3, 6, 6],
+    [2, 2, 3, 5],
+  ],
+  { unique: true, outputMetadata: true }
+)
+// [
+//   [0, 0, 1],
+//   [1, 1, 2],
+//   [1, 2, 3],
+//   [1, 3, 5],
+//   [0, 4, 6],
+// ]
 ```
