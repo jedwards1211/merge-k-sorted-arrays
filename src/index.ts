@@ -1,7 +1,11 @@
 import TinyQueue from 'tinyqueue'
 
 function defaultComparator(a: any, b: any) {
-  return a < b ? -1 : a > b ? 1 : 0
+  return (
+    a < b ? -1
+    : a > b ? 1
+    : 0
+  )
 }
 
 type Comparator<T> = (a: T, b: T) => number
@@ -12,7 +16,7 @@ type Comparator<T> = (a: T, b: T) => number
 type Entry<T> = [
   indexOfSourceArray: number,
   indexInSourceArray: number,
-  value: T
+  value: T,
 ]
 
 /**
@@ -69,8 +73,9 @@ export default function merge<T>(
   }
   const finalComparator = comparator || defaultComparator
 
-  const entryComparator = unique
-    ? (a: Entry<T>, b: Entry<T>) => finalComparator(a[2], b[2]) || b[0] - a[0]
+  const entryComparator =
+    unique ?
+      (a: Entry<T>, b: Entry<T>) => finalComparator(a[2], b[2]) || b[0] - a[0]
     : (a: Entry<T>, b: Entry<T>) => finalComparator(a[2], b[2])
 
   const totalLength = arrays.reduce(function (length, array) {
@@ -79,10 +84,14 @@ export default function merge<T>(
   const output = new Array(totalLength)
   let outputIndex = 0
 
-  const initQueue = arrays.reduce(function (initQueue, array, index) {
+  const initQueue = arrays.reduce<Entry<T>[]>(function (
+    initQueue,
+    array,
+    index
+  ) {
     if (array.length) initQueue.push([index, 0, array[0]])
     return initQueue
-  }, [] as Entry<T>[])
+  }, [])
 
   const queue = new TinyQueue(initQueue, entryComparator)
   let prev: Entry<T> | undefined

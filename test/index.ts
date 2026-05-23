@@ -259,7 +259,7 @@ describe('merge', function () {
     for (let i = 0; i < 50; i++) {
       const arrays: number[][] = []
       for (let i = 2; i < 2 + randInt(10); i++) {
-        const nextArray = new Array(randInt(50))
+        const nextArray = new Array<number>(randInt(50))
         nextArray[0] = randInt(20)
         for (let k = 1; k < nextArray.length; k++) {
           nextArray[k] = nextArray[k - 1] + randInt(5)
