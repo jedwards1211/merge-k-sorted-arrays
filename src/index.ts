@@ -29,11 +29,13 @@ export type MergeOptions<T> = {
   comparator?: Comparator<T>
   /**
    * If true, outputs {@link Entry} tuples instead of just values:
-   * [indexOfSourceArray: number, indexInSourceArray: number, value: T]
+   * `[indexOfSourceArray: number, indexInSourceArray: number, value: T]`
+   * If `unique: true` isn't passed, duplicate values (for which `comparator(prev, next) === 0`)
+   * will always be in order of their `indexOfSourceArray`, `indexInSourceArray`
    */
   outputMetadata?: boolean
   /**
-   * If true, filters out duplicate values (for which comparator(prev, next) === 0).
+   * If true, filters out duplicate values (for which `comparator(prev, next) === 0`).
    * When using with `outputMetadata: true`, the last occurrence of a value in the last array
    * containing that value wins.
    */
@@ -75,8 +77,10 @@ export default function merge<T>(
 
   const entryComparator =
     unique ?
+      // it's unnecessary to compare `indexInSourceArray` here (`a[1] - b[1]`) because we only ever keep one entry
+      // from a given source array in the queue
       (a: Entry<T>, b: Entry<T>) => finalComparator(a[2], b[2]) || b[0] - a[0]
-    : (a: Entry<T>, b: Entry<T>) => finalComparator(a[2], b[2])
+    : (a: Entry<T>, b: Entry<T>) => finalComparator(a[2], b[2]) || a[0] - b[0]
 
   const totalLength = arrays.reduce(function (length, array) {
     return length + array.length

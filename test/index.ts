@@ -46,21 +46,67 @@ describe('merge', function () {
       )
     ).to.deep.equal([1, 2, 3, 5, 6])
   })
+  it('unique edge case', function () {
+    expect(
+      merge(
+        [
+          [1, 3, 3, 6, 6],
+          [2, 2, { v: 3 }, 5],
+        ],
+        {
+          unique: true,
+          comparator: (a, b) =>
+            (typeof a == 'number' ? a : a.v) - (typeof b == 'number' ? b : b.v),
+        }
+      )
+    ).to.deep.equal([1, 2, { v: 3 }, 5, 6])
+    expect(
+      merge(
+        [
+          [2, 2, { v: 3 }, 5],
+          [1, 3, 3, 6, 6],
+        ],
+        {
+          unique: true,
+          comparator: (a, b) =>
+            (typeof a == 'number' ? a : a.v) - (typeof b == 'number' ? b : b.v),
+        }
+      )
+    ).to.deep.equal([1, 2, 3, 5, 6])
+    expect(
+      merge(
+        [
+          [2, 2, { v: 3 }, 5],
+          [1, 3, 6, 6],
+        ],
+        {
+          unique: true,
+          comparator: (a, b) =>
+            (typeof a == 'number' ? a : a.v) - (typeof b == 'number' ? b : b.v),
+        }
+      )
+    ).to.deep.equal([1, 2, 3, 5, 6])
+  })
   it('outputMetadata option works', function () {
     expect(
-      merge([[1, 3, 5, 7], [], [2, 4, 6, 8], [0, 9, 10, 11], [], [], []], {
-        outputMetadata: true,
-      })
+      merge(
+        [[1, 3, 5, 7], [], [2, 3, 3, 4, 6, 8], [0, 9, 10, 11], [], [], []],
+        {
+          outputMetadata: true,
+        }
+      )
     ).to.deep.equal([
       [3, 0, 0],
       [0, 0, 1],
       [2, 0, 2],
       [0, 1, 3],
-      [2, 1, 4],
+      [2, 1, 3],
+      [2, 2, 3],
+      [2, 3, 4],
       [0, 2, 5],
-      [2, 2, 6],
+      [2, 4, 6],
       [0, 3, 7],
-      [2, 3, 8],
+      [2, 5, 8],
       [3, 1, 9],
       [3, 2, 10],
       [3, 3, 11],
